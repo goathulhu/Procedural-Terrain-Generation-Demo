@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba2cb6wvwutjj"]
+
+[ext_resource type="ArrayMesh" uid="uid://4ltir7dps845" path="res://Meshes/destructiondummy.res" id="1_2hqsh"]
+[ext_resource type="Material" uid="uid://b7myj2vtqlu5t" path="res://Materials/PlaceholderMaterial.tres" id="2_g6dth"]
+
+[node name="Dummy" type="CSGMesh3D"]
+operation = 2
+mesh = ExtResource("1_2hqsh")
+material = ExtResource("2_g6dth")

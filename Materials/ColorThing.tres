@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c081uf6758jdp"]
+
+[ext_resource type="Shader" uid="uid://oj8g60ofyr77" path="res://Materials/ColorThing.gdshader" id="1_rx5qg"]
+
+[resource]
+shader = ExtResource("1_rx5qg")

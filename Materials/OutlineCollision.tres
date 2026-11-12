@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://be3grbru41uw0"]
+
+[sub_resource type="Shader" id="Shader_pxqlm"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, unshaded;
+
+uniform vec4 albedo : source_color;
+uniform float proximity_fade_distance : hint_range(0.0, 4096.0, 0.01);
+uniform sampler2D depth_texture : hint_depth_texture, repeat_disable, filter_nearest;
+
+void fragment() {
+	float proximity_depth_tex = textureLod(depth_texture, SCREEN_UV, 0.0).r;
+	vec4 ndc = OUTPUT_IS_SRGB ? vec4(vec3(SCREEN_UV, proximity_depth_tex) * 2.0 - 1.0, 1.0) : vec4(SCREEN_UV * 2.0 - 1.0, proximity_depth_tex, 1.0);
+	vec4 proximity_view_pos = INV_PROJECTION_MATRIX * ndc;
+	proximity_view_pos.xyz /= proximity_view_pos.w;
+	ALPHA *= clamp(1.0 - smoothstep(proximity_view_pos.z + proximity_fade_distance, proximity_view_pos.z, VERTEX.z), 0.0, 1.0);
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_pxqlm")
+shader_parameter/albedo = Color(0, 1, 0, 1)
+shader_parameter/proximity_fade_distance = 1.0
