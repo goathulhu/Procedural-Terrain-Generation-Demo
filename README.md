@@ -1,4 +1,4 @@
-# Environmental Destruction Demo  
+# Procedural Terrain Generation Demo  
 ### - xX_UnfinishedAsHellDisclaimer_Xx  
 > **THE CURRENT STATE DOES NOT REPRESENT THE FINAL PROJECT**  
 > **CHECK BACK AT A LATER DATE FOR A MORE COMPLETE AND UPDATED VERSION**  
