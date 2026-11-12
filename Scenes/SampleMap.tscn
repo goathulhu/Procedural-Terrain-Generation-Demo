@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bgserxcsehhma"]
+
+[ext_resource type="Script" uid="uid://d2wreaqqpss6t" path="res://Scripts/SampleMap.cs" id="1_8xgm7"]
+[ext_resource type="Material" uid="uid://4vkfv3ynvhpn" path="res://Materials/Terrain.tres" id="2_gdy2j"]
+[ext_resource type="Material" uid="uid://ckj730g06xh76" path="res://Materials/Grass.tres" id="3_vhfsg"]
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_s3a47"]
+size = 0.5
+sections = 2
+section_length = 0.25
+section_segments = 1
+
+[node name="SampleMap" type="Node3D" unique_id=606543535]
+script = ExtResource("1_8xgm7")
+TerrainMaterial = ExtResource("2_gdy2j")
+GrassMaterial = ExtResource("3_vhfsg")
+GrassMesh = SubResource("RibbonTrailMesh_s3a47")

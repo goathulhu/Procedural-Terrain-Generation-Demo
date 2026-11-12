@@ -1,3 +1,0 @@
-[gd_scene format=3 uid="uid://bkl2ejhjtfqli"]
-
-[node name="TerrainChunk" type="MeshInstance3D"]

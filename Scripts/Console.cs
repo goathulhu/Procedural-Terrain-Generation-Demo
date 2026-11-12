@@ -26,16 +26,24 @@ public partial class Console : Node
 		GameManager = (GameManager)GetTree().Root.FindChild("GameManager", true, false);
 		Player = (Player)GetTree().Root.FindChild("Player", true, false);
 		
-		Log(this.Name, "\n\n\n\n\n\n\n\n\n\n\n", Lt.Raw);
-		Log(this.Name, "[color=darkgray]------------------------------------------", Lt.Raw);
-		Log(this.Name, "[color=darkgray]running", Lt.Raw);
-		Log(this.Name, "[color=darkgray] _____  _____  _____  _____  _____  _____ ", Lt.Raw);
-		Log(this.Name, "[color=darkgray]|   __||  |  ||   __||   __||   __|| __  |", Lt.Raw);
-		Log(this.Name, "[color=darkgray]|__   ||  |  ||   __||   __||   __||    -|", Lt.Raw);
-		Log(this.Name, "[color=darkgray]|_____||_____||__|   |__|   |_____||__|__|", Lt.Raw);
-		Log(this.Name, "[color=darkgray]                            pre-alpha v0.1", Lt.Raw);
-		Log(this.Name, "[color=darkgray]------------------------------------------", Lt.Raw);
-		Log(this.Name, "[color=darkgray]type \"help;\" to get a list of available commands", Lt.Raw);
+		Log(Name, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", Lt.Raw);
+		Log(Name, "[color=darkgray]               running ---------------------,", Lt.Raw);
+		Log(Name, "[color=darkgray]               ,----,-,,-,----,----,----,----,", Lt.Raw);
+		Log(Name, "[color=darkgray]               |  --| || |  --|  --|  --| -  |", Lt.Raw);
+		Log(Name, "[color=darkgray]               |--  | '' | ,--| ,--|  --|   -|", Lt.Raw);
+		Log(Name, "[color=darkgray]               '----'----'-'  '-'  '----'-'--'", Lt.Raw);
+		Log(Name, "[color=darkgray]                '-------------- pre-alpha v0.1", Lt.Raw);
+		Log(Name, "", Lt.Raw);
+		Log(Name, "[color=darkgray] ,-systems-----", Lt.Raw);
+		Log(Name, "[color=darkgray] | Godot Engine v4.7", Lt.Raw);
+		Log(Name, "[color=darkgray] | Ruptage Destruction v1", Lt.Raw);
+		Log(Name, "[color=darkgray] '                                           -----licenses-,", Lt.Raw);
+		Log(Name, "[color=darkgray]                    see \\Licenses\\README.txt for more info |", Lt.Raw);
+		Log(Name, "[color=darkgray] ,-tips-----                                               '", Lt.Raw);
+		Log(Name, "[color=darkgray] | shoot the walls          please", Lt.Raw);
+		Log(Name, "[color=darkgray] | type \"help;\" for a list of available commands", Lt.Raw);
+		Log(Name, "[color=darkgray] | for more projects or demos check my itch and github", Lt.Raw);
+		Log(Name, "[color=darkgray] '", Lt.Raw);
 		
 		EndEdit();
 		UpdateLog();
@@ -50,8 +58,7 @@ public partial class Console : Node
 		if (GameManager.IsConsoleOpen())
 		{
 			// scolling
-			if (GameManager.InputManager.Hold("mwup")) CurrentLine--;
-			if (GameManager.InputManager.Hold("mwdown")) CurrentLine++;
+			CurrentLine -= (int)GameManager.InputManager.MouseWheelDelta();
 			
 			// history
 			if (GameManager.InputManager.Down("arrowup"))
@@ -168,38 +175,38 @@ public partial class Console : Node
 				switch (Parameters[0])
 				{
 					case "template" : // command template
-						Log(this.Name, "this is a template command", Lt.Err);
+						Log(Name, "this is a template command", Lt.Err);
 						break; //--------------------------------------------------
 					
 					case "help" : // displays a list of available commands with a description
-						Log(this.Name, "", Lt.Raw);
-						Log(this.Name, "[color=white]----- commands without paremeters:", Lt.Raw);
+						Log(Name, "", Lt.Raw);
+						Log(Name, "[color=white]----- commands without paremeters:", Lt.Raw);
 						
-						Log(this.Name, "[color=white]               \"help\" : shows this list", Lt.Raw);
-						Log(this.Name, "[color=white]               \"quit\" : quits the game", Lt.Raw);
-						Log(this.Name, "[color=white]             \"reload\" : reloads the game", Lt.Raw);
-						Log(this.Name, "[color=white]               \"test\" : prints command line test output", Lt.Raw);
+						Log(Name, "[color=white]               \"help\" : shows this list", Lt.Raw);
+						Log(Name, "[color=white]               \"quit\" : quits the game", Lt.Raw);
+						Log(Name, "[color=white]             \"reload\" : reloads the game", Lt.Raw);
+						Log(Name, "[color=white]               \"test\" : prints command line test output", Lt.Raw);
 						
-						Log(this.Name, "", Lt.Raw);
-						Log(this.Name, "[color=white]----- commands with paremeters:", Lt.Raw);
+						Log(Name, "", Lt.Raw);
+						Log(Name, "[color=white]----- commands with paremeters:", Lt.Raw);
 						
-						Log(this.Name, "[color=white]              \"spawn\" : instantiates a given prefab", Lt.Raw);
-						Log(this.Name, "[color=white]               \"drop\" : drops item based on id", Lt.Raw);
-						Log(this.Name, "[color=white]               \"give\" : adds item to players inventory based on id", Lt.Raw);
-						Log(this.Name, "[color=white]                 \"tp\" : teleports the player to a given vector3 position", Lt.Raw);
+						Log(Name, "[color=white]              \"spawn\" : instantiates a given prefab", Lt.Raw);
+						Log(Name, "[color=white]               \"drop\" : drops item based on id", Lt.Raw);
+						Log(Name, "[color=white]               \"give\" : adds item to players inventory based on id", Lt.Raw);
+						Log(Name, "[color=white]                 \"tp\" : teleports the player to a given vector3 position", Lt.Raw);
 						
-						Log(this.Name, "", Lt.Raw);
-						Log(this.Name, "[color=white]^^^ here is a list of all available commands ^^^", Lt.Raw);
+						Log(Name, "", Lt.Raw);
+						Log(Name, "[color=white]^^^ here is a list of all available commands ^^^", Lt.Raw);
 						
 						break; //--------------------------------------------------
 
 					case "quit" : // quits the game session and closes the application without saving
-						Log(this.Name, "closing session", Lt.Err);
+						Log(Name, "closing session", Lt.Err);
 						GetTree().Quit();
 						break; //--------------------------------------------------
 
 					case "reload" : // reloads the current scene
-						Log(this.Name, "command disabled", Lt.Err);
+						Log(Name, "command disabled", Lt.Err);
 						break;
 						//Log(this.Name, "reloading the scene", Lt.msg);
 						//GetTree().ReloadCurrentScene();
@@ -210,22 +217,23 @@ public partial class Console : Node
 						break; //--------------------------------------------------
 
 					case "spawn" : // will eventually spawn npcs and enemies and stuff
-						Log(this.Name, "command disabled", Lt.Err);
+						Log(Name, "command disabled", Lt.Err);
 						break; //--------------------------------------------------
 
 					case "drop" : // will drop an item in front of the player
-						Log(this.Name, "command disabled", Lt.Err);
+						Log(Name, "command disabled", Lt.Err);
 						break; //--------------------------------------------------
 
 					case "give" : // will give the player and item or resource
-						Log(this.Name, "command disabled", Lt.Err);
+						Log(Name, "command disabled", Lt.Err);
 						break; //--------------------------------------------------
 					
 					case "car" : // car
-						Log(this.Name, " ╱|、", Lt.Raw);
-						Log(this.Name, "(˚ˎ 。7", Lt.Raw);
-						Log(this.Name, " |、˜〵", Lt.Raw);
-						Log(this.Name, " じしˍ,)ノ", Lt.Raw);
+						Log(Name, " ╱|、", Lt.Raw);
+						Log(Name, "(˚ˎ 。7", Lt.Raw);
+						Log(Name, " |、˜〵", Lt.Raw);
+						Log(Name, " じしˍ,)ノ", Lt.Raw);
+						
 						break;
 
 					case "tp" : // teleports the player to the given coordinates in global/world space
@@ -237,40 +245,39 @@ public partial class Console : Node
 								if (Player != null)
 								{
 									Player.TeleportTo(NewPos);
-									Log(this.Name, $"player teleported to [color=red]{NewPos.X} [color=green]{NewPos.Y} [color=blue]{NewPos.Z}", Lt.Msg);
+									Log(Name, $"player teleported to [color=red]{NewPos.X} [color=green]{NewPos.Y} [color=blue]{NewPos.Z}", Lt.Msg);
 								}
-								else Log(this.Name, Error("noPlayer"), Lt.Err);
+								else Log(Name, Error("noPlayer"), Lt.Err);
 										
 							}
-							else Log(this.Name, Error("invalidTeleport"), Lt.Err);
+							else Log(Name, Error("invalidTeleport"), Lt.Err);
 						}
 						else if (Parameters.Length == 3)
 						{
 							if (Parameters[1].IsValidFloat() && Parameters[2].IsValidFloat())
 							{
-								Vector3 NewPos = 
-									new Vector3(
-										Parameters[1].ToFloat(), 
-										GameManager.CurrentMap.GetTerrainHeightAt("Terrain", 
-											new Vector2(
-												Parameters[1].ToFloat(), 
-												Parameters[2].ToFloat())) + 1f, 
-										Parameters[2].ToFloat());
+								Vector3 NewPos = new Vector3(
+									Parameters[1].ToFloat(), 
+									GameManager.CurrentMap.GetTerrainHeightAt("Terrain", 
+										new Vector2(
+											Parameters[1].ToFloat(), 
+											Parameters[2].ToFloat())) + 1f, 
+									Parameters[2].ToFloat());
 								if (Player != null)
 								{
 									Player.TeleportTo(NewPos);
-									Log(this.Name, $"player teleported to [color=red]{NewPos.X} [color=green]{NewPos.Y} [color=blue]{NewPos.Z}", Lt.Msg);
+									Log(Name, $"player teleported to [color=red]{NewPos.X} [color=green]{NewPos.Y} [color=blue]{NewPos.Z}", Lt.Msg);
 								}
-								else Log(this.Name, Error("noPlayer"), Lt.Err);
+								else Log(Name, Error("noPlayer"), Lt.Err);
 										
 							}
-							else Log(this.Name, Error("invalidTeleport"), Lt.Err);
+							else Log(Name, Error("invalidTeleport"), Lt.Err);
 						}
-						else Log(this.Name, Error("invalidTeleport"), Lt.Err);
+						else Log(Name, Error("invalidTeleport"), Lt.Err);
 						break; //--------------------------------------------------
 
 					default : // no matching command found
-						Log(this.Name, Error("noCommandFound"), Lt.Err);
+						Log(Name, Error("noCommandFound"), Lt.Err);
 						break; //--------------------------------------------------
 				}
 			}

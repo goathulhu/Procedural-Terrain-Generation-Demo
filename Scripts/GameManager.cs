@@ -24,11 +24,7 @@ public partial class GameManager : Node3D
 	private int HowManyFps;
 
 	[ExportCategory("Map Generation")]
-	[Export] public PackedScene DummyMap;
-	[Export] public PackedScene TerrainChunkPrefab;
-	[Export] public PackedScene FoliageChunkPrefab;
-	[Export] public PackedScene PropChunkPrefab;
-	[Export] public PackedScene PoiChunkPrefab;
+	[Export] public PackedScene SampleMap;
 	public Map CurrentMap;
 
 	[ExportCategory("PhysicsCasts")]
@@ -48,7 +44,7 @@ public partial class GameManager : Node3D
 		NoisePerlin.SetNoiseType(FastNoiseLite.NoiseTypeEnum.Perlin);
 		NoisePerlin.SetFractalType(FastNoiseLite.FractalTypeEnum.None);
 
-		var NewMap = DummyMap.Instantiate();
+		var NewMap = SampleMap.Instantiate();
 		AddChild(NewMap);
 		CurrentMap = (Map)NewMap;
 		CurrentMap.Init(this, 696969);

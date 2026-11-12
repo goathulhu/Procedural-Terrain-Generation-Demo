@@ -142,11 +142,12 @@ public abstract partial class Map : Node3D
 		// determine if flat enough for poi spawnage
 		var CanPoi = DoPoi && Math.Abs(NewTerrainMesh.Highest - NewTerrainMesh.Lowest) < 0.01f && NewTerrainMesh.Lowest > MinPoiHeight && NewTerrainMesh.Highest < MaxPoiHeight;
 		
-		var NewTerrainChunk = (MeshInstance3D)GameManager.TerrainChunkPrefab.Instantiate();
+		var NewTerrainChunk = new MeshInstance3D();
 		AddChild(NewTerrainChunk);
 		NewTerrainChunk.Position = ChunkOrigin;
 		NewTerrainChunk.Name = ChunkName;
-
+		
+		NewTerrainChunk.CastShadow = 0;
 		NewTerrainChunk.Mesh = NewTerrainMesh.Mesh;
 		NewTerrainChunk.MaterialOverride = TerrainMaterial;
 		NewTerrainChunk.VisibilityRangeEnd = DrawDistance;
@@ -294,11 +295,12 @@ public abstract partial class Map : Node3D
 		
 		if (NewFoliageMesh.IsEmpty) return;
 		
-		var NewFoliageChunk = (MultiMeshInstance3D)GameManager.FoliageChunkPrefab.Instantiate();
+		var NewFoliageChunk = new MultiMeshInstance3D();
 		AddChild(NewFoliageChunk);
 		NewFoliageChunk.Position = ChunkOrigin;
 		NewFoliageChunk.Name = ChunkName;
-
+		
+		NewFoliageChunk.CastShadow = 0;
 		NewFoliageChunk.Multimesh = NewFoliageMesh.Mesh;
 		NewFoliageChunk.MaterialOverride = FoliageMaterial;
 		NewFoliageChunk.VisibilityRangeEnd = DrawDistance;
@@ -377,7 +379,7 @@ public abstract partial class Map : Node3D
 		var ChunkOrigin = new Vector3(InX * Tiles * TilesSize, 0f, InY * Tiles * TilesSize);
 		var ChunkName = "PropChunk_" + Type + "_X" + (InX < 10 ? "0" + InX : InX) + "_Y" + (InY < 10 ? "0" + InY : InY);
 		
-		var NewPropChunk = (Node3D)GameManager.PropChunkPrefab.Instantiate();
+		var NewPropChunk = new Node3D();
 		AddChild(NewPropChunk);
 		NewPropChunk.Position = ChunkOrigin;
 		NewPropChunk.Name = ChunkName;

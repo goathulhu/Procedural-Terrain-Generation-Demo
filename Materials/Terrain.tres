@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4vkfv3ynvhpn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bf53h"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2irst"]
+noise = SubResource("FastNoiseLite_bf53h")
+seamless = true
+
+[resource]
+specular_mode = 2
+albedo_texture = SubResource("NoiseTexture2D_2irst")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true

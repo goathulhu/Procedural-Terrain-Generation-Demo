@@ -18,6 +18,10 @@ public partial class InputManager : Node
 	private Vector2 LastMouseInputValue = Vector2.Zero;
 	private Vector2 CurrentMouseInputValue = Vector2.Zero;
 	private Vector2 DeltaMouseInputValue = Vector2.Zero;
+	
+	private float LastMouseWheelValue = 0f;
+	private float CurrentMouseWheelValue = 0f;
+	private float DeltaMouseWheelValue = 0f;
 
 	public override void _Ready()
 	{
@@ -32,6 +36,14 @@ public partial class InputManager : Node
 	{
 		if (@event is InputEventMouseMotion EventMouseMotion)
 			CurrentMouseInputValue += EventMouseMotion.Relative;
+		
+		if (@event is InputEventMouseButton EventMouseButton)
+		{
+			if (EventMouseButton.ButtonIndex == MouseButton.WheelUp)
+				CurrentMouseWheelValue += 1f;
+			if (EventMouseButton.ButtonIndex == MouseButton.WheelDown)
+				CurrentMouseWheelValue -= 1f;
+		}
 	}
 
 	public override void _Process(double delta)
@@ -112,6 +124,11 @@ public partial class InputManager : Node
 		}
 
 		return false;
+	}
+
+	public float MouseWheelDelta()
+	{
+		return DeltaMouseWheelValue;
 	}
 
 	public Vector2 MouseDelta()

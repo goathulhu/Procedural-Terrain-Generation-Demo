@@ -1,19 +1,18 @@
 [gd_scene format=3 uid="uid://bqoegoja1oit7"]
 
 [ext_resource type="Script" uid="uid://qli55vtb1iau" path="res://Scripts/GameManager.cs" id="1_kldst"]
+[ext_resource type="PackedScene" uid="uid://bgserxcsehhma" path="res://Scenes/SampleMap.tscn" id="2_2irst"]
 [ext_resource type="Script" uid="uid://d1ndyjixdxmi7" path="res://Scripts/InputManager.cs" id="2_b2bpf"]
-[ext_resource type="PackedScene" uid="uid://bgserxcsehhma" path="res://Scenes/MapGeneration/DummyMap.tscn" id="2_dahhg"]
-[ext_resource type="PackedScene" uid="uid://bkl2ejhjtfqli" path="res://Scenes/MapGeneration/TerrainChunk.tscn" id="3_3so38"]
-[ext_resource type="Script" uid="uid://bv84x6io0murf" path="res://Scripts/Console.cs" id="3_7lihs"]
-[ext_resource type="PackedScene" uid="uid://ct4y6v02cln0o" path="res://Scenes/MapGeneration/FoliageChunk.tscn" id="4_3cx6b"]
 [ext_resource type="Script" uid="uid://bo6kflv3e4i45" path="res://Scripts/Hud.cs" id="4_3so38"]
 [ext_resource type="FontFile" uid="uid://mn2k1hm7pdr7" path="res://SourceCodePro-Bold.ttf" id="4_71axn"]
 [ext_resource type="Script" uid="uid://brveo5geg5ii2" path="res://Scripts/Player.cs" id="5_b2bpf"]
-[ext_resource type="PackedScene" uid="uid://eg0pypt24owc" path="res://Scenes/MapGeneration/PropChunk.tscn" id="5_wxwew"]
+[ext_resource type="PackedScene" uid="uid://bt8cd6k18cdtm" path="res://Scenes/Console.tscn" id="8_71axn"]
+[ext_resource type="Script" uid="uid://d0c6w8dommcuh" path="res://Scripts/SubViewportInput.gd" id="10_dahhg"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2wi6t"]
+viewport_path = NodePath("Node/Viewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_71axn"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_71axn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3so38"]
 radius = 0.3
@@ -30,13 +29,15 @@ volumetric_fog_anisotropy = 0.75
 
 [node name="Game" type="Node3D" unique_id=1528719548]
 
+[node name="Screen" type="TextureRect" parent="." unique_id=220596928]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_2wi6t")
+
 [node name="GameManager" type="Node3D" parent="." unique_id=1643953742 node_paths=PackedStringArray("FpsLabel", "Ray", "Sphere")]
 script = ExtResource("1_kldst")
 FpsLabel = NodePath("FPSLabel")
-DummyMap = ExtResource("2_dahhg")
-TerrainChunkPrefab = ExtResource("3_3so38")
-FoliageChunkPrefab = ExtResource("4_3cx6b")
-PropChunkPrefab = ExtResource("5_wxwew")
+SampleMap = ExtResource("2_2irst")
 Ray = NodePath("Ray")
 Sphere = NodePath("Sphere")
 
@@ -99,87 +100,7 @@ target_position = Vector3(0, 0, 0)
 [node name="InputManager" type="Node" parent="." unique_id=1961793797]
 script = ExtResource("2_b2bpf")
 
-[node name="Console" type="Node" parent="." unique_id=1820216061 node_paths=PackedStringArray("ConsoleControl", "TextLabel", "TextField")]
-script = ExtResource("3_7lihs")
-ConsoleControl = NodePath("Control")
-TextLabel = NodePath("Control/ConsoleLog")
-TextField = NodePath("Control/ConsoleLine")
-
-[node name="Control" type="Control" parent="Console" unique_id=764357153]
-visible = false
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-
-[node name="ConsoleLog" type="RichTextLabel" parent="Console/Control" unique_id=1099880918]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -320.0
-offset_right = 1040.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_71axn")
-theme_override_fonts/bold_font = ExtResource("4_71axn")
-theme_override_fonts/bold_italics_font = ExtResource("4_71axn")
-theme_override_fonts/italics_font = ExtResource("4_71axn")
-theme_override_fonts/mono_font = ExtResource("4_71axn")
-theme_override_font_sizes/normal_font_size = 14
-theme_override_font_sizes/bold_font_size = 14
-theme_override_font_sizes/bold_italics_font_size = 14
-theme_override_font_sizes/italics_font_size = 14
-theme_override_font_sizes/mono_font_size = 14
-bbcode_enabled = true
-text = " - something
- - something
- - something
- - something
- - something
- - something
- - something
- - something
- - something
- - something
- - something
- - something
- - something
- - something"
-scroll_active = false
-scroll_following = true
-autowrap_mode = 2
-selection_enabled = true
-
-[node name="ConsoleLine" type="TextEdit" parent="Console/Control" unique_id=1794545755]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -48.0
-offset_right = 528.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_71axn")
-theme_override_font_sizes/font_size = 14
-placeholder_text = "console go brrr"
-caret_blink = true
-caret_move_on_right_click = false
-caret_multiple = false
-draw_control_chars = true
-draw_tabs = true
-draw_spaces = true
-text_direction = 1
+[node name="Console" parent="." unique_id=575845307 instance=ExtResource("8_71axn")]
 
 [node name="Hud" type="Node" parent="." unique_id=2115804917]
 script = ExtResource("4_3so38")
@@ -194,37 +115,13 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Crosshair" type="Control" parent="Hud/Control" unique_id=951502085]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.7853982
-scale = Vector2(0.005, 0.005)
-metadata/_edit_use_anchors_ = true
+[node name="Node" type="Node" parent="." unique_id=697487214]
+script = ExtResource("10_dahhg")
 
-[node name="TextureRect" type="TextureRect" parent="Hud/Control/Crosshair" unique_id=1880591141]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -500.0
-offset_right = 500.0
-offset_bottom = 500.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_71axn")
+[node name="Viewport" type="SubViewport" parent="Node" unique_id=522765486]
+size = Vector2i(2560, 1440)
 
-[node name="Player" type="Node3D" parent="." unique_id=2034533338 node_paths=PackedStringArray("Controller", "BodyRotY", "Collider", "CameraTargetPos", "PlayerView", "CameraMotionGlobal", "CamRotY", "CamRotX", "CameraMotionLocal", "PlayerCamera", "CameraOrientation", "SpreadR", "Director")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Player" type="Node3D" parent="Node/Viewport" unique_id=2034533338 node_paths=PackedStringArray("Controller", "BodyRotY", "Collider", "CameraTargetPos", "PlayerView", "CameraMotionGlobal", "CamRotY", "CamRotX", "CameraMotionLocal", "PlayerCamera", "CameraOrientation", "SpreadR", "Director")]
 script = ExtResource("5_b2bpf")
 Controller = NodePath("PlayerController")
 BodyRotY = NodePath("PlayerController/BodyRotY")
@@ -240,58 +137,53 @@ CameraOrientation = NodePath("PlayerView/CameraMotionGlobal/CamRotY/CamRotX/Came
 SpreadR = NodePath("PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera/SpreadR")
 Director = NodePath("PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera/SpreadR/Director")
 
-[node name="PlayerController" type="CharacterBody3D" parent="Player" unique_id=2137626878]
+[node name="PlayerController" type="CharacterBody3D" parent="Node/Viewport/Player" unique_id=2137626878]
 collision_layer = 2
 wall_min_slide_angle = 0.017453292
 floor_stop_on_slope = false
 floor_block_on_wall = false
 floor_snap_length = 0.0
 
-[node name="Collider" type="CollisionShape3D" parent="Player/PlayerController" unique_id=598665962]
+[node name="Collider" type="CollisionShape3D" parent="Node/Viewport/Player/PlayerController" unique_id=598665962]
 shape = SubResource("SphereShape3D_3so38")
 
-[node name="BodyRotY" type="Node3D" parent="Player/PlayerController" unique_id=1946256645]
+[node name="BodyRotY" type="Node3D" parent="Node/Viewport/Player/PlayerController" unique_id=1946256645]
 
-[node name="CameraTargetPos" type="Node3D" parent="Player/PlayerController/BodyRotY" unique_id=642165713]
+[node name="CameraTargetPos" type="Node3D" parent="Node/Viewport/Player/PlayerController/BodyRotY" unique_id=642165713]
 
-[node name="PlayerView" type="Node3D" parent="Player" unique_id=303474703]
+[node name="PlayerView" type="Node3D" parent="Node/Viewport/Player" unique_id=303474703]
 
-[node name="CameraMotionGlobal" type="Node3D" parent="Player/PlayerView" unique_id=1794460938]
+[node name="CameraMotionGlobal" type="Node3D" parent="Node/Viewport/Player/PlayerView" unique_id=1794460938]
 
-[node name="CamRotY" type="Node3D" parent="Player/PlayerView/CameraMotionGlobal" unique_id=1105838599]
+[node name="CamRotY" type="Node3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal" unique_id=1105838599]
 
-[node name="CamRotX" type="Node3D" parent="Player/PlayerView/CameraMotionGlobal/CamRotY" unique_id=792866321]
+[node name="CamRotX" type="Node3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY" unique_id=792866321]
 
-[node name="CameraMotionLocal" type="Node3D" parent="Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX" unique_id=1354311491]
+[node name="CameraMotionLocal" type="Node3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX" unique_id=1354311491]
 
-[node name="Camera" type="Camera3D" parent="Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal" unique_id=657052624]
+[node name="Camera" type="Camera3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal" unique_id=657052624]
 current = true
 fov = 110.0
 near = 0.001
 far = 256.0
 
-[node name="CameraOrientation" type="Node3D" parent="Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera" unique_id=1892096145]
+[node name="CameraOrientation" type="Node3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera" unique_id=1892096145]
 
-[node name="SpreadR" type="Node3D" parent="Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera" unique_id=478799189]
+[node name="SpreadR" type="Node3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera" unique_id=478799189]
 
-[node name="Director" type="Node3D" parent="Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera/SpreadR" unique_id=960632119]
+[node name="Director" type="Node3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera/SpreadR" unique_id=960632119]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1938736348]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node/Viewport" unique_id=1938736348]
 environment = SubResource("Environment_fgofq")
 
-[node name="Map" type="Node3D" parent="." unique_id=505635434]
+[node name="Map" type="Node3D" parent="Node/Viewport" unique_id=505635434]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map" unique_id=892984222]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
-visible = false
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node/Viewport/Map" unique_id=892984222]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = 0.0
-shadow_opacity = 0.0
-shadow_blur = 0.0
+shadow_enabled = true
 shadow_caster_mask = 4293918720
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.0
@@ -301,9 +193,12 @@ directional_shadow_fade_start = 0.0
 directional_shadow_max_distance = 0.0
 directional_shadow_pancake_size = 0.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Map" unique_id=49849932]
+[node name="OmniLight3D" type="OmniLight3D" parent="Node/Viewport/Map" unique_id=49849932]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+visible = false
 light_color = Color(0.7294118, 1, 0.65882355, 1)
 light_energy = 2.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
 shadow_enabled = true
-omni_range = 64.0
+omni_range = 128.0
