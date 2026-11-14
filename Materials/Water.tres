@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cxqjede4ojip4"]
+
+[ext_resource type="Texture2D" uid="uid://djkdpc4yapa5x" path="res://Materials/TerrainBaseTexture.png" id="1_7u5yi"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+specular_mode = 2
+albedo_color = Color(0, 0.5370987, 0.7373294, 0.75000006)
+albedo_texture = ExtResource("1_7u5yi")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+uv1_scale = Vector3(0.001, 0.001, 0.001)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+uv1_world_triplanar = true
+proximity_fade_enabled = true
+proximity_fade_distance = 0.5
+distance_fade_mode = 2
+distance_fade_min_distance = 256.0
+distance_fade_max_distance = 192.0

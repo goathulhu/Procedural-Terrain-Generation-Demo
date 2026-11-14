@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" uid="uid://d2wreaqqpss6t" path="res://Scripts/SampleMap.cs" id="1_8xgm7"]
 [ext_resource type="Material" uid="uid://4vkfv3ynvhpn" path="res://Materials/Terrain.tres" id="2_gdy2j"]
-[ext_resource type="Material" uid="uid://ckj730g06xh76" path="res://Materials/Grass.tres" id="3_vhfsg"]
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_s3a47"]
-size = 0.5
-sections = 2
-section_length = 0.25
-section_segments = 1
+[ext_resource type="Material" uid="uid://by44oo7khtrpj" path="res://Materials/grass1.tres" id="3_1b2ro"]
+[ext_resource type="Material" uid="uid://cxqjede4ojip4" path="res://Materials/Water.tres" id="3_2l86p"]
+[ext_resource type="Material" uid="uid://dqpqw0k78f0q7" path="res://Materials/grass2.tres" id="4_1b2ro"]
+[ext_resource type="ArrayMesh" uid="uid://0hy5b1mjqbga" path="res://Meshes/Grass.tres" id="4_jef5f"]
+[ext_resource type="Material" uid="uid://b00teclj3ebf2" path="res://Materials/grass3.tres" id="5_2l86p"]
 
 [node name="SampleMap" type="Node3D" unique_id=606543535]
 script = ExtResource("1_8xgm7")
 TerrainMaterial = ExtResource("2_gdy2j")
-GrassMaterial = ExtResource("3_vhfsg")
-GrassMesh = SubResource("RibbonTrailMesh_s3a47")
+WaterMaterial = ExtResource("3_2l86p")
+GrassMaterial1 = ExtResource("3_1b2ro")
+GrassMaterial2 = ExtResource("4_1b2ro")
+GrassMaterial3 = ExtResource("5_2l86p")
+GrassMesh = ExtResource("4_jef5f")

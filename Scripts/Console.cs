@@ -36,11 +36,10 @@ public partial class Console : Node
 		Log(Name, "", Lt.Raw);
 		Log(Name, "[color=darkgray] ,-systems-----", Lt.Raw);
 		Log(Name, "[color=darkgray] | Godot Engine v4.7", Lt.Raw);
-		Log(Name, "[color=darkgray] | Ruptage Destruction v1", Lt.Raw);
+		Log(Name, "[color=darkgray] | Wordle Map Generation v1", Lt.Raw);
 		Log(Name, "[color=darkgray] '                                           -----licenses-,", Lt.Raw);
 		Log(Name, "[color=darkgray]                    see \\Licenses\\README.txt for more info |", Lt.Raw);
 		Log(Name, "[color=darkgray] ,-tips-----                                               '", Lt.Raw);
-		Log(Name, "[color=darkgray] | shoot the walls          please", Lt.Raw);
 		Log(Name, "[color=darkgray] | type \"help;\" for a list of available commands", Lt.Raw);
 		Log(Name, "[color=darkgray] | for more projects or demos check my itch and github", Lt.Raw);
 		Log(Name, "[color=darkgray] '", Lt.Raw);

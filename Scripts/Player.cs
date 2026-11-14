@@ -68,7 +68,7 @@ public partial class Player : Node3D
 		Speed.Current = 0f;
 		Speed.Target = 0f;
 		Speed.Idle = 0f; 
-		Speed.Walk = 24f;
+		Speed.Walk = 32f;
 		
 		Velocity.XYZ = Vector3.Zero;
 		Velocity.XYZTarget = Vector3.Zero;
@@ -126,7 +126,7 @@ public partial class Player : Node3D
 		Speed.Current *= GameManager.GlobalTimeScale;
 		
 		Velocity.XYZTarget = GlobalInputDirection * Speed.Current;
-		Velocity.XYZ = Velocity.XYZ.Lerp(Velocity.XYZTarget, DeltaTime * 2f);
+		Velocity.XYZ = Velocity.XYZ.Lerp(Velocity.XYZTarget, DeltaTime * 4f);
 		Controller.Velocity = Velocity.XYZ;
 		Controller.MoveAndSlide();
 	}

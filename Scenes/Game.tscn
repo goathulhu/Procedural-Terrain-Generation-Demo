@@ -24,8 +24,6 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.01
 reflected_light_source = 1
 tonemap_mode = 2
-glow_bloom = 1.0
-volumetric_fog_anisotropy = 0.75
 
 [node name="Game" type="Node3D" unique_id=1528719548]
 
@@ -119,9 +117,12 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("10_dahhg")
 
 [node name="Viewport" type="SubViewport" parent="Node" unique_id=522765486]
+msaa_2d = 3
+msaa_3d = 3
 size = Vector2i(2560, 1440)
 
 [node name="Player" type="Node3D" parent="Node/Viewport" unique_id=2034533338 node_paths=PackedStringArray("Controller", "BodyRotY", "Collider", "CameraTargetPos", "PlayerView", "CameraMotionGlobal", "CamRotY", "CamRotX", "CameraMotionLocal", "PlayerCamera", "CameraOrientation", "SpreadR", "Director")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
 script = ExtResource("5_b2bpf")
 Controller = NodePath("PlayerController")
 BodyRotY = NodePath("PlayerController/BodyRotY")
@@ -152,6 +153,7 @@ shape = SubResource("SphereShape3D_3so38")
 [node name="CameraTargetPos" type="Node3D" parent="Node/Viewport/Player/PlayerController/BodyRotY" unique_id=642165713]
 
 [node name="PlayerView" type="Node3D" parent="Node/Viewport/Player" unique_id=303474703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
 
 [node name="CameraMotionGlobal" type="Node3D" parent="Node/Viewport/Player/PlayerView" unique_id=1794460938]
 
@@ -163,9 +165,9 @@ shape = SubResource("SphereShape3D_3so38")
 
 [node name="Camera" type="Camera3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal" unique_id=657052624]
 current = true
-fov = 110.0
+fov = 80.0
 near = 0.001
-far = 256.0
+far = 512.0
 
 [node name="CameraOrientation" type="Node3D" parent="Node/Viewport/Player/PlayerView/CameraMotionGlobal/CamRotY/CamRotX/CameraMotionLocal/Camera" unique_id=1892096145]
 
@@ -197,6 +199,24 @@ directional_shadow_pancake_size = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
 visible = false
 light_color = Color(0.7294118, 1, 0.65882355, 1)
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 128.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Node/Viewport/Map" unique_id=1031579282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
+visible = false
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 128.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Node/Viewport/Map" unique_id=1273732766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
+visible = false
 light_energy = 2.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0

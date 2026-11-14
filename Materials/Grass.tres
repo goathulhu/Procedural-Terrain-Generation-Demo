@@ -1,7 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://ckj730g06xh76"]
 
 [resource]
-cull_mode = 2
-specular_mode = 2
-backlight_enabled = true
-backlight = Color(1, 1, 1, 1)
+distance_fade_mode = 2
+distance_fade_min_distance = 8.0
+distance_fade_max_distance = 4.0

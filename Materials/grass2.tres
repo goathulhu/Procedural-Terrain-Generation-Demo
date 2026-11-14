@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dqpqw0k78f0q7"]
+
+[ext_resource type="Shader" uid="uid://jp2r8mee1eje" path="res://Materials/Grass.gdshader" id="1_n2ca2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_n2ca2")
+shader_parameter/base_color = Color(0.34901962, 0.5372549, 0.34901962, 1)
+shader_parameter/tip_color = Color(0.42358288, 0.62782896, 0.42358288, 1)
+shader_parameter/dither_min = 127.999997138944
+shader_parameter/dither_max = 63.999998569472

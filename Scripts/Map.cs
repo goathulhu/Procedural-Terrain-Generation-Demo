@@ -275,7 +275,23 @@ public abstract partial class Map : Node3D
 		// output
 		return (TerrainMesh, Highest.Y, Lowest.Y);
 	}
-
+	
+	// proxy method without random scaling
+	protected void NewFoliageChunk(
+		int InX, 
+		int InY, 
+		string Type, 
+		int Tiles, 
+		float TilesSize, 
+		float Width, 
+		float Height, 
+		Mesh FoliageMesh, 
+		Material FoliageMaterial, 
+		float DrawDistance)
+	{
+		NewFoliageChunk(InX, InY, Type, Tiles, TilesSize, (Width, Width), (Height, Height), FoliageMesh, FoliageMaterial, DrawDistance);
+	}
+	
 	protected void NewFoliageChunk(
 		int InX, 
 		int InY, 
@@ -329,7 +345,7 @@ public abstract partial class Map : Node3D
 				
 				if (Result.DidHit)
 				{
-					if (GetDoFoliageAt(Type, new Vector2(Result.Position.X, Result.Position.Z), Result.Normal.AngleTo(Vector3.Up), Result.Position.Y))
+					if (GetDoFoliageAt(Type, new Vector2(Result.Position.X, Result.Position.Z), Mathf.RadToDeg(Result.Normal.AngleTo(Vector3.Up)), Result.Position.Y))
 					{
 						Transform3D FoliageTransform = new Transform3D(
 						RotateBasisToUpDirection(Basis.Identity, Result.Normal), Result.Position - Origin);
